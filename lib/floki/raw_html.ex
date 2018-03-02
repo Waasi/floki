@@ -83,6 +83,7 @@ defmodule Floki.RawHTML do
   defp close_end_tag(type, []) when type in @self_closing_tags, do: ""
   defp close_end_tag(type, _), do: "</#{type}>"
 
+  defp build_attrs({attr, true}, attrs), do: ~s(#{attrs} #{attr})
   defp build_attrs({attr, value}, attrs), do: ~s(#{attrs} #{attr}="#{value}")
   defp build_attrs(attr, attrs), do: "#{attrs} #{attr}"
 
